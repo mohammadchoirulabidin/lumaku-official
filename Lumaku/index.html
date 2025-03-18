@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Pemesanan T-Shirt</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        color: #2c2c2c;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+      }
+
+      select,
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border-radius: 8px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      .marketplace-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        gap: 10px;
+      }
+
+      .marketplace-buttons a {
+        flex: 1;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        transition: background 0.3s;
+        font-size: 14px;
+      }
+
+      .tokopedia {
+        background: #03ac0e;
+      }
+
+      .tokopedia:hover {
+        background: #02970c;
+      }
+
+      .shopee {
+        background: #ee4d2d;
+      }
+
+      .shopee:hover {
+        background: #d94427;
+      }
+
+      .instagram {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+      }
+
+      .instagram:hover {
+        opacity: 0.85;
+      }
+
+      .copyright {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Pemesanan T-Shirt</h2>
+
+      <!-- Tambahkan di dalam container form -->
+      <select id="jenis" onchange="checkJenis()">
+        <option value="">-- Pilih Jenis T-Shirt --</option>
+        <option value="T-Shirt Polos">T-Shirt Polos</option>
+        <option value="T-Shirt Grafis">T-Shirt Grafis</option>
+        <option value="T-Shirt Lengan Panjang">T-Shirt Lengan Panjang</option>
+      </select>
+
+      <!-- Sub-variant khusus grafis -->
+      <div id="grafisVarian" style="display: none">
+        <select id="desainGrafis">
+          <option value="Desain A">Desain Grafis A</option>
+          <option value="Desain B">Desain Grafis B</option>
+          <option value="Desain C">Desain Grafis C</option>
+          <option value="Desain D">Desain Grafis D</option>
+        </select>
+      </div>
+
+      <input type="number" id="jumlah" min="1" placeholder="Masukkan jumlah" />
+
+      <select id="ukuran">
+        <option value="M">Ukuran M</option>
+        <option value="L">Ukuran L</option>
+        <option value="XL">Ukuran XL</option>
+        <option value="XXL">Ukuran XXL</option>
+      </select>
+
+      <input
+        type="text"
+        id="lokasi"
+        placeholder="Masukkan Lokasi / Alamat Singkat"
+      />
+
+      <textarea
+        id="catatan"
+        rows="3"
+        placeholder="Catatan tambahan (optional)"
+      ></textarea>
+
+      <button onclick="pesanWhatsApp()">Pesan via WhatsApp</button>
+
+      <div class="marketplace-buttons">
+        <a
+          href="https://www.tokopedia.com/lumaku-1?utm_campaign=Shop-0-7112952-180325&utm_source=salinlink&utm_medium=share"
+          target="_blank"
+          class="tokopedia"
+          >Tokopedia</a
+        >
+        <a
+          href="https://https://shopee.co.id/lumakuofficial"
+          target="_blank"
+          class="shopee"
+          >Shopee</a
+        >
+        <a
+          href="https://www.instagram.com/lumakuofficial?igsh=NHdjZDlqYTc1empo"
+          target="_blank"
+          class="instagram"
+          >Instagram</a
+        >
+      </div>
+
+      <div class="copyright">&copy; By: Mohammad Choirul Abidin</div>
+    </div>
+
+    <script>
+      function checkJenis() {
+        const jenis = document.getElementById("jenis").value;
+        const grafisVarian = document.getElementById("grafisVarian");
+        if (jenis === "T-Shirt Grafis") {
+          grafisVarian.style.display = "block";
+        } else {
+          grafisVarian.style.display = "none";
+        }
+      }
+
+      function pesanWhatsApp() {
+        const jenis = document.getElementById("jenis").value;
+        const jumlah = document.getElementById("jumlah").value;
+        const ukuran = document.getElementById("ukuran").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const catatan = document.getElementById("catatan").value;
+        const desain = document.getElementById("desainGrafis").value;
+
+        if (
+          jumlah === "" ||
+          jumlah <= 0 ||
+          lokasi.trim() === "" ||
+          jenis === ""
+        ) {
+          alert("Lengkapi form pemesanan terlebih dahulu.");
+          return;
+        }
+
+        let message = `Halo Admin,
+    
+    Saya ingin memesan T-Shirt dengan detail berikut:
+    
+    - Jenis T-Shirt: ${jenis}`;
+        if (jenis === "T-Shirt Grafis") {
+          message += `\n- Desain Grafis: ${desain}`;
+        }
+        message += `
+    - Jumlah: ${jumlah} pcs
+    - Ukuran: ${ukuran}
+    - Lokasi: ${lokasi}
+    ${catatan ? "\nCatatan: " + catatan : ""}
+    
+    Mohon info lebih lanjut mengenai pembayaran dan pengiriman ya. Terima kasih!`;
+
+        const url = `https://wa.me/62895360904098?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(url, "_blank");
+      }
+      function pesanWhatsApp() {
+        const jenis = document.getElementById("jenis").value;
+        const jumlah = document.getElementById("jumlah").value;
+        const ukuran = document.getElementById("ukuran").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const catatan = document.getElementById("catatan").value;
+        const desain = document.getElementById("desainGrafis").value;
+
+        if (
+          jumlah === "" ||
+          jumlah <= 0 ||
+          lokasi.trim() === "" ||
+          jenis === ""
+        ) {
+          alert("Lengkapi form pemesanan terlebih dahulu.");
+          return;
+        }
+
+        let message = `Halo Admin,
+
+Saya ingin memesan T-Shirt dengan detail berikut:
+
+- Jenis T-Shirt: ${jenis}`;
+        if (jenis === "T-Shirt Grafis") {
+          message += `\n- Desain Grafis: ${desain}`;
+        }
+        message += `
+- Jumlah: ${jumlah} pcs
+- Ukuran: ${ukuran}
+- Lokasi: ${lokasi}
+${catatan ? "\nCatatan: " + catatan : ""}
+
+Mohon info lebih lanjut mengenai pembayaran dan pengiriman ya. Terima kasih!`;
+
+        const url = `https://wa.me/6285607937939?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(url, "_blank");
+
+        // Reset form ke default setelah klik
+        document.getElementById("jenis").value = "";
+        document.getElementById("jumlah").value = "";
+        document.getElementById("ukuran").value = "M"; // atau bisa ke opsi paling atas
+        document.getElementById("lokasi").value = "";
+        document.getElementById("catatan").value = "";
+        document.getElementById("grafisVarian").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
